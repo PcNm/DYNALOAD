@@ -5,7 +5,7 @@
  * Created on:  5 jun 2019
  * Updated on: 10 may 2020
  *     Author: Martin Andreasson
- *    Version: 1.0
+ *    Version: 1.1
  *    License: Mozilla Public License Version 2.0
  * ---------------------------------------------------------------------------
  * Usage:
@@ -114,12 +114,16 @@ void* dynaload_procload(
 	hbool      * success );
 
 
+#ifdef __cplusplus
+}
+#endif //__cplusplus
 /****************************************************************************
  *
  * IMPLEMENTATION
  *
  ****************************************************************************/
 #ifdef DYNALOAD_IMPLEMENTATION
+#undef DYNALOAD_IMPLEMENTATION
 
 #ifndef DYNALOAD_MALLOC
 #define DYNALOAD_MALLOC( size ) malloc( size )
@@ -209,6 +213,10 @@ void* dynaload_procload(
 
 #if HF_PLATFORM == HF_PLATFORM_OSX
 #	include <sys/sysctl.h>
+#endif
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 //! memcpy returning pointer to last byte (mempcpy)
@@ -412,8 +420,8 @@ void* dynaload_procload(
 	return ret;
 }
 
-#endif // DYNALOAD_IMPLEMENTATION
 #ifdef __cplusplus
 }
-#endif
+#endif //__cplusplus
+#endif // DYNALOAD_IMPLEMENTATION
 #endif /* HEADER_DYNALOAD_H_INCLUDED_ */
