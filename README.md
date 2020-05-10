@@ -29,7 +29,7 @@ all! Enjoy the dynamic library loader.*
 <br>
 
 #### STATUS
-Version: **1.0** <br>
+Version: **1.1** <br>
 Platforms supported: Windows, Linux, Mac. <br>
 It has been tested with: VS2017, GCC, CLANG, Pelles C, VC6.
 <br><br>
