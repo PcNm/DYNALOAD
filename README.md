@@ -20,7 +20,7 @@ before including the header file in *one* C or C++ file to create the implementa
 #define DYNALOAD_IMPLEMENTATION  
 #include "DYNALOAD.H"  
 ```
-For more documentation, check out the header file.
+For more documentation, check out the header file and the sample.
 <br><br>
 *That's
 all! Enjoy the dynamic library loader.*
