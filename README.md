@@ -1,9 +1,8 @@
 # DYNALOAD
 A single-header cross-platform dynamic library loader for C &amp; C++
-<br><br>
-
+<br>
+#### REQUIRES HARDFORM.H
 ### USAGE
-Simply 
 ```c
 #include "DYNALOAD.H"
 ```
@@ -23,8 +22,8 @@ before including the header file in *one* C or C++ file to create the implementa
 For more documentation, check out the header file.
 <br><br>
 *That's all! Enjoy the dynamic library loader.* <br>
-###### Go ahead and create C wrapper-loaders for D3D11, PhysX, Vulkan, or whatever. :-)
-<br><br>
+###### Go ahead and create C wrapper-loaders for D3D11, PhysX, Vulkan, or whatever you like. :-)
+<br>
 
 #### STATUS
 Version: **1.0** <br>
