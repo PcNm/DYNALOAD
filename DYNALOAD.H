@@ -154,7 +154,13 @@ void* dynaload_procload(
 #endif //!DYNALOAD_MEMCPY
 
 #ifndef DYNALOAD_LOGF
+#ifdef HF_COMPILER_SUPPORTS_VARIADIC_MACRO
 #define DYNALOAD_LOGF(...) do{fprintf( stderr, __VA_ARGS__ );}while(0)
+#else
+#	define DYNALOAD_LOGF dynaload_logf
+#	define DYNALOAD_USES_LOGF_FUNCTION /* no variadic macro support */
+static void dynaload_logf( const char * fmt, ... );
+#endif
 #ifndef DYNALOAD_USES_STDIO_H
 #define DYNALOAD_USES_STDIO_H
 #endif //!DYNALOAD_USES_STDIO_H
@@ -184,6 +190,10 @@ void* dynaload_procload(
 
 #ifdef DYNALOAD_USES_STRING_H
 #include <string.h>
+#endif
+
+#ifdef DYNALOAD_USES_LOGF_FUNCTION
+#include <stdarg.h>
 #endif
 
 /*
@@ -217,6 +227,17 @@ void* dynaload_procload(
 
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+// used when variadic macro support is unavailable
+#ifdef DYNALOAD_USES_LOGF_FUNCTION
+static void dynaload_logf( const char * fmt, ... )
+{
+	va_list va;
+	va_start( va, fmt );
+	vfprintf( stderr, fmt, va );
+	va_end( va );
+}
 #endif
 
 //! memcpy returning pointer to last byte (mempcpy)
